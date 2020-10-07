@@ -220,6 +220,9 @@ const ImgCrop = forwardRef((props, ref) => {
       ctx.rotate((rotateVal * Math.PI) / 180);
       ctx.translate(-halfMax, -halfMax);
     }
+	
+	ctx.fillStyle = 'rgb(255, 255, 255)'
+	ctx.fillRect(0, 0, canvas.width, canvas.height)
 
     // draw the source image in the center of the max canvas
     const left = (maxLen - naturalWidth) / 2;
@@ -231,6 +234,7 @@ const ImgCrop = forwardRef((props, ref) => {
     const { width, height, x, y } = cropPixelsRef.current;
     canvas.width = width;
     canvas.height = height;
+	ctx.fillRect(0, 0, canvas.width, canvas.height)
     ctx.putImageData(maxImgData, Math.round(-left - x), Math.round(-top - y));
 
     // get the new image
